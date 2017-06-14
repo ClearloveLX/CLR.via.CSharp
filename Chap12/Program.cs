@@ -64,7 +64,8 @@ namespace Chap12 {
             #endregion
             //CallingSwap();
             GenericType<string> gt = new GenericType<string>("4577dsfasa564");
-            Console.WriteLine(gt.Converter<string>());
+            //Console.WriteLine(gt.Converter<string>());
+            Display(266);
             Console.Read();
         }
 
@@ -73,7 +74,8 @@ namespace Chap12 {
         }
 
         private static void Display<T>(T o) {
-
+            Console.WriteLine(o.GetType());
+            Display(o.ToString());
         }
 
         private static void Swap<T>(ref T o1, ref T o2) {
