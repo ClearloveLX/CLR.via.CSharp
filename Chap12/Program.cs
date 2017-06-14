@@ -65,8 +65,26 @@ namespace Chap12 {
             //CallingSwap();
             GenericType<string> gt = new GenericType<string>("4577dsfasa564");
             //Console.WriteLine(gt.Converter<string>());
-            Display(266);
+            //Display(266);
+            MethodTakingAnyType(275);
             Console.Read();
+        }
+
+        private static void CallMin() {
+            object o1 = "Jeff", o2 = "Richter";
+            //object oMin = Min<object>(o1, o2);
+        }
+
+        private static T Min<T>(T o1, T o2) where T:IComparable<T> {
+            if (o1.CompareTo(o2) < 0) return o1;
+            return o2;
+        }
+
+        private static bool MethodTakingAnyType<T>(T o) {
+            T temp = o;
+            Console.WriteLine(o.ToString());
+            bool b = temp.Equals(o);
+            return b;
         }
 
         private static void Display(string s) {
