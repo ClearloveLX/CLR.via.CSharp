@@ -15,6 +15,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chap12", "Chap12\Chap12.csp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chap13", "Chap13\Chap13.csproj", "{AC30F0D6-DC70-42EC-9C5E-0221B75B6F1D}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Part3--BaseType", "Part3--BaseType", "{E7333588-EA77-4C40-9DF3-EE574E488E78}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chap14", "Chap14\Chap14.csproj", "{0A58069B-D443-4FAC-B123-A2C37E4691D8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,8 +49,15 @@ Global
 		{AC30F0D6-DC70-42EC-9C5E-0221B75B6F1D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AC30F0D6-DC70-42EC-9C5E-0221B75B6F1D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AC30F0D6-DC70-42EC-9C5E-0221B75B6F1D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0A58069B-D443-4FAC-B123-A2C37E4691D8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0A58069B-D443-4FAC-B123-A2C37E4691D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0A58069B-D443-4FAC-B123-A2C37E4691D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0A58069B-D443-4FAC-B123-A2C37E4691D8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{0A58069B-D443-4FAC-B123-A2C37E4691D8} = {E7333588-EA77-4C40-9DF3-EE574E488E78}
 	EndGlobalSection
 EndGlobal
