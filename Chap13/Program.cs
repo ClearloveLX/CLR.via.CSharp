@@ -59,6 +59,50 @@ namespace Chap13 {
         }
     }
 
+    public static class SomeType {
+        private static void Test() {
+            int x = 5;
+            Guid g = new Guid();
+            M(x);
+        }
+
+        private static int M(IComparable t) {
+            return 10;
+        }
+    }
+
+    public interface IWindow {
+        object GetMenu();
+    }
+    public interface IRestaurant {
+        object GetMenu();
+    }
+
+    public sealed class MarioPizzeria : IWindow, IRestaurant {
+        object IWindow.GetMenu() {
+            return "IWindow GetMenu";
+        }
+
+        object IRestaurant.GetMenu() {
+            return "IRestaurant GetMenu";
+        }
+
+        public object GetMenu() {
+            return "GetMenu";
+        }
+    }
+
+    internal struct SomeValueType : IComparable {
+        private int m_x;
+        public SomeValueType(int x) { m_x = x; }
+        public int CompareTo(SomeValueType other) {
+            return (m_x - other.m_x);
+        }
+        int IComparable.CompareTo(object obj) {
+            return CompareTo((SomeValueType)obj);
+        }
+    }
+
     class Program {
         static void Main(string[] args) {
             #region 1
@@ -100,13 +144,32 @@ namespace Chap13 {
             //IDisposable d = st;
             //d.Dispose(); 
             #endregion
-            Number n = new Number();
-            //将n和int(5)的值比较
-            IComparable<int> cInt = n;
-            int result = cInt.CompareTo(284);
+            #region 5
+            //Number n = new Number();
+            ////将n和int(5)的值比较
+            //IComparable<int> cInt = n;
+            //int result = cInt.CompareTo(284);
 
-            IComparable<string> cString = n;
-            result = cString.CompareTo("5");
+            //IComparable<string> cString = n;
+            //result = cString.CompareTo("5"); 
+            #endregion
+            #region 6
+            //MarioPizzeria mp = new MarioPizzeria();
+            //Console.WriteLine(mp.GetMenu());
+            //IWindow window = mp;
+            //Console.WriteLine(window.GetMenu());
+            //IRestaurant restaurant = mp;
+            //Console.WriteLine(restaurant.GetMenu()); 
+            #endregion
+            //SomeValueType v = new SomeValueType(0);
+            //IComparable c = v;
+            //object o = new object();
+            //int n = c.CompareTo(v);
+            //n = c.CompareTo(o);
+
+            int x = 5;
+            Single s = ((IConvertible)x).ToSingle(null);
+            Console.WriteLine(s);
             Console.Read();
         }
 
