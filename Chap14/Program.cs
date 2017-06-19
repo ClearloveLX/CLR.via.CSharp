@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -49,8 +50,23 @@ namespace Chap14 {
         #endregion
 
         static void MainTwo() {
-            string s = "Hi"+" 300".ToUpperInvariant();
-            Console.WriteLine(s);
+            //string s = "Hi"+" 300".ToUpperInvariant();
+
+            //string s1 = "Strasse";
+            //string s2 = "Straße";
+            //bool eq;
+            //eq = string.Compare(s1, s2, StringComparison.Ordinal) == 0;
+            //Console.WriteLine("'{0}' '{2}' '{1}'", s1, s2, eq ? "==" : "!=");
+
+            //CultureInfo ci = new CultureInfo("de-DE");
+            //eq = string.Compare(s1, s2, true, ci) == 0;
+            //Console.WriteLine("'{0}' '{2}' '{1}'", s1, s2, eq ? "==" : "!=");
+
+            string output = string.Empty;
+            string[] symbol = new string[] { "<", "=", ">" };
+            int x;
+            CultureInfo c1;
+
         }
     }
 }
