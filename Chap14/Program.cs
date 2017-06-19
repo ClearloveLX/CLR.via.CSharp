@@ -10,7 +10,6 @@ namespace Chap14 {
             //MainOne();
             MainTwo();
 
-
             Console.Read();
         }
 
