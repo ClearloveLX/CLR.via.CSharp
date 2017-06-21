@@ -4,6 +4,7 @@ using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace Chap14 {
     class Program {
@@ -62,11 +63,61 @@ namespace Chap14 {
             //eq = string.Compare(s1, s2, true, ci) == 0;
             //Console.WriteLine("'{0}' '{2}' '{1}'", s1, s2, eq ? "==" : "!=");
 
-            string output = string.Empty;
-            string[] symbol = new string[] { "<", "=", ">" };
-            int x;
-            CultureInfo c1;
+            //string s1 = "Hello";
+            //string s2 = "Hello";
+            //Console.WriteLine(object.ReferenceEquals(s1, s2));
+            //s1 = string.Intern(s1);
+            //s2 = string.Intern(s2);
+            //Console.WriteLine(object.ReferenceEquals(s1, s2));
 
+            //string s = "a\u0304\u0308bc\u0327";
+            //SubstringByTextElements(s);
+            //EnumTextElements(s);
+            //EnumTextElementIndexes(s);
+
+            //StringBuilder sb = new StringBuilder();
+            //sb.AppendFormat("{0} {1}", "Jeffrey", "Richter").Replace(" ", "-");
+
+            //string s = sb.ToString().ToUpper();
+            //sb.Length = 0;
+            //sb.Append(s).Insert(8, "双击666");
+            //s = sb.ToString();
+            //Console.WriteLine(s);
+
+            //decimal price = 123.54M;
+            //string s = price.ToString("C", CultureInfo.InvariantCulture);
+            //MessageBox.Show(s);
+
+            string s = string.Format("On {0},{1} is {2} years old.", new DateTime(2012, 4, 22, 14, 35, 5), "Aidan", 9);
+            Console.WriteLine(s);
         }
+
+        static void SubstringByTextElements(string s) {
+            string output = string.Empty;
+            StringInfo si = new StringInfo(s);
+            for (int element = 0; element < si.LengthInTextElements; element++) {
+                output += string.Format("Text element{0} is '{1}' {2}", element, si.SubstringByTextElements(element, 1), Environment.NewLine);
+            }
+            MessageBox.Show(output, "Result of SubstringByTextElements");
+        }
+
+        static void EnumTextElements(string s) {
+            string output = string.Empty;
+            TextElementEnumerator charEnum = StringInfo.GetTextElementEnumerator(s);
+            while (charEnum.MoveNext()) {
+                output += string.Format("Character at index{0} is '{1}' {2}", charEnum.ElementIndex, charEnum.GetTextElement(), Environment.NewLine);
+            }
+            MessageBox.Show(output, "Result of GetTextElementEnumerator");
+        }
+
+        static void EnumTextElementIndexes(string s) {
+            string output = string.Empty;
+            int[] textElemIndex = StringInfo.ParseCombiningCharacters(s);
+            for (int i = 0; i < textElemIndex.Length; i++) {
+                output += string.Format("Character {0} starts at index{1}{2}", i, textElemIndex[i], Environment.NewLine);
+            }
+            MessageBox.Show(output, "Result of ParseCombiningCharacters");
+        }
+
     }
 }
