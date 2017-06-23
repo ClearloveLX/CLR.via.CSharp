@@ -10,8 +10,8 @@ namespace Chap14 {
     class Program {
         static void Main(string[] args) {
             //MainOne();
-            MainTwo();
-
+            //MainTwo();
+            MainThree();
             Console.Read();
         }
 
@@ -50,6 +50,7 @@ namespace Chap14 {
         }
         #endregion
 
+        #region 第十四章第2~4节
         static void MainTwo() {
             //string s = "Hi"+" 300".ToUpperInvariant();
 
@@ -118,6 +119,23 @@ namespace Chap14 {
             }
             MessageBox.Show(output, "Result of ParseCombiningCharacters");
         }
+        #endregion
 
+        static void MainThree() {
+            //int x = int.Parse("1A", NumberStyles.HexNumber, null);
+            //string s = "Hi there.";
+            //Encoding encodingUTF8 = Encoding.UTF8;
+            //byte[] encodedBytes = encodingUTF8.GetBytes(s);
+            //Console.WriteLine("Encoded Bytes:" + BitConverter.ToString(encodedBytes));
+            //string decodedString = encodingUTF8.GetString(encodedBytes);
+            //Console.WriteLine("Decoded string:" + decodedString);
+
+            byte[] bytes = new byte[10];
+            new Random().NextBytes(bytes);
+            string s = Convert.ToBase64String(bytes);
+            Console.WriteLine(s);
+            bytes = Convert.FromBase64String(s);
+            Console.WriteLine(BitConverter.ToString(bytes));
+        }
     }
 }
