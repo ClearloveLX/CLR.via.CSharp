@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
+using System.Runtime.InteropServices;
+using System.Security;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -130,12 +132,43 @@ namespace Chap14 {
             //string decodedString = encodingUTF8.GetString(encodedBytes);
             //Console.WriteLine("Decoded string:" + decodedString);
 
-            byte[] bytes = new byte[10];
-            new Random().NextBytes(bytes);
-            string s = Convert.ToBase64String(bytes);
-            Console.WriteLine(s);
-            bytes = Convert.FromBase64String(s);
-            Console.WriteLine(BitConverter.ToString(bytes));
+            //byte[] bytes = new byte[10];
+            //new Random().NextBytes(bytes);
+            //string s = Convert.ToBase64String(bytes);
+            //Console.WriteLine(s);
+            //bytes = Convert.FromBase64String(s);
+            //Console.WriteLine(BitConverter.ToString(bytes));
+
+            using (SecureString ss = new SecureString()) {
+                Console.WriteLine("Please enter PassWord: ");
+                while (true) {
+                    ConsoleKeyInfo cki = Console.ReadKey(true);
+                    if (cki.Key == ConsoleKey.Enter) {
+                        break;
+                    }
+                    ss.AppendChar(cki.KeyChar);
+                    Console.Write("*");
+                }
+                Console.WriteLine();
+                DisplaySecureString(ss);
+            }
+
+
         }
+
+        //private unsafe static void DisplaySecureString(SecureString ss) {
+        //    char* pc = null;
+        //    try {
+        //        pc = (char*)Marshal.SecureStringToGlobalAllocUnicode(ss);
+        //        for (int index = 0; pc[index] != 0; index++) {
+        //            Console.Write(pc[index]);
+        //        }
+        //    }
+        //    finally {
+        //        if (pc!=null) {
+        //            Marshal.ZeroFreeCoTaskMemUnicode((IntPtr)pc);
+        //        }
+        //    }
+        //}
     }
 }
