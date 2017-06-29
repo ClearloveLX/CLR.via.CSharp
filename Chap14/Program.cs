@@ -150,7 +150,7 @@ namespace Chap14 {
                     Console.Write("*");
                 }
                 Console.WriteLine();
-                DisplaySecureString(ss);
+                //DisplaySecureString(ss);
             }
 
 
